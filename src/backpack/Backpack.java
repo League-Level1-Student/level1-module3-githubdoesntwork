@@ -8,12 +8,17 @@ public class Backpack {
 	private Pencil pencil;
 	private Ruler ruler;
 	private Textbook textbook;
-
 	public void packAndCheck() {
 		// Your mission is to go to school.
 		// 1. First you need to put all your supplies into your backpack - use
 		// the putInBackpack(...) methods
-
+		Pencil pencil = new Pencil();
+		//new Pencil().Pencil();
+		Ruler ruler = new Ruler();
+		Textbook textbook=new Textbook();
+		putInBackpack(pencil);
+		putInBackpack(ruler);
+		putInBackpack(textbook);
 		goToSchool();
 	}
 
@@ -59,7 +64,7 @@ abstract class Supply {
 }
 
 class Pencil extends Supply {
-	Pencil() {
+	public Pencil() {
 		this.name = "pencil";
 		System.out.println("You got your pencil!");
 	}
@@ -70,7 +75,7 @@ class Pencil extends Supply {
 }
 
 class Ruler extends Supply {
-	Ruler() {
+	public Ruler() {
 		this.name = "ruler";
 		System.out.println("You found your ruler!!");
 	}
@@ -81,7 +86,7 @@ class Ruler extends Supply {
 }
 
 class Textbook extends Supply {
-	Textbook() {
+	public Textbook() {
 		this.name = "textbook";
 		System.out.println("You got your boring textbook");
 	}
