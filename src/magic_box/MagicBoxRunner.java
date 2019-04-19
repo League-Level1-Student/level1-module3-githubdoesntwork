@@ -9,7 +9,5 @@ import javax.swing.SwingUtilities;
 public class MagicBoxRunner {
 	public static void main(String[] args) throws Exception {
 		SwingUtilities.invokeLater(new MagicBox());
-		MediaPalace palace = new MediaPalace();
-		palace.playMp3FromComputer("noot");
 	}
 }

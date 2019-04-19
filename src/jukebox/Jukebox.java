@@ -5,6 +5,8 @@ package jukebox;
  */
 
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -12,7 +14,10 @@ import java.net.URL;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 import javazoom.jl.player.advanced.AdvancedPlayer;
@@ -20,16 +25,28 @@ import javazoom.jl.player.advanced.AdvancedPlayer;
 /*   If you don't have javazoom.jar in your project, you can download it from here: http://bit.ly/javazoom
  *   Right click your project and add it as a JAR (Under Java Build Path > Libraries).*/
 
-public class Jukebox implements Runnable {
-
+public class Jukebox implements Runnable, ActionListener {
+	Song song = new Song("screech.mp3");
+	JFrame frame = new JFrame();
+	JPanel panel = new JPanel();
+	JButton button = new JButton();
+	JButton button1 = new JButton();
+	Song song1 = new Song("E.flac");
     public void run() {
 
 		// 1. Find an mp3 on your computer or on the Internet.
 		// 2. Create a Song object for that mp3
-Song song = new Song("ColBreakz - 10000.mp3.crdownload");
-song.Song("ColBreakz - 10000.mp3.crdownload");
-song.setDuration(243);
-song.play();
+panel.add(button);
+panel.add(button1);
+button1.setText("Pop");
+button1.addActionListener(this);
+frame.add(panel);
+button.setText("Screech");
+frame.setSize(100, 100);
+frame.setResizable(false);
+frame.setVisible(true);
+frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
+button.addActionListener(this);
 		// 3. Play the Song
 
 		/*
@@ -47,6 +64,18 @@ song.play();
 		URL imageURL = getClass().getResource(fileName);
 		Icon icon = new ImageIcon(imageURL);
 		return new JLabel(icon);
+	}
+
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource()==button) {
+			song1.stop();
+		song.play();
+		}else if(e.getSource()==button1){
+			song.stop();
+			song1.play();
+		}
 	}
 
 }

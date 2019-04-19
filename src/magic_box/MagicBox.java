@@ -15,11 +15,14 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 public class MagicBox extends JPanel implements Runnable, MouseListener {
-
+JLabel label = new JLabel();
+JFrame frame = new JFrame("The Magic Box contains many secrets...");
+JPanel panel =  new JPanel();
 	/*
 	 * We are going to hide secrets within the magic box. 
 	 * When the user clicks on a secret place, stuff will happen.
@@ -48,7 +51,10 @@ public class MagicBox extends JPanel implements Runnable, MouseListener {
 	}
 
 	private void createUI() {
-		JFrame frame = new JFrame("The Magic Box contains many secrets...");
+		panel.setBounds(100, 100, 100, 100);
+		panel.setVisible(false);
+		panel.add(label);
+		frame.add(panel);
 		frame.add(this);
 		frame.addMouseListener(this);
 		setPreferredSize(new Dimension(backgroundImage.getWidth(), backgroundImage.getHeight()));
@@ -74,7 +80,11 @@ public class MagicBox extends JPanel implements Runnable, MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		System.out.println("You clicked the mouse");
-		
+		MediaPalace palace = new MediaPalace();
+	//	palace.playMusicOnComputer("screech.mp3");
+		label=palace.loadImageFromWithinProject("Photo.jpeg");
+		panel.setVisible(true);
+		panel.add(label);
 	}
 
 	@Override
